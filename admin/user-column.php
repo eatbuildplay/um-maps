@@ -4,7 +4,7 @@ add_filter( 'manage_users_columns', 'pp_manage_users_geo_column' );
 
 function pp_manage_users_geo_column( $columns ) {
 
-	$columns['geo'] = __( 'Geo' );
+	$columns['geo'] = __( 'Geocoded' );
 
 	return $columns;
 }
@@ -33,7 +33,7 @@ function pp_maps_geocode_metabox( $user ) {
 	<table class="form-table">
 		<tr>
 			<th>
-				<label for="birthday">Longitude</label>
+				<label for="geo_longitude">Longitude</label>
 			</th>
 			<td>
 				<input type="text"
@@ -45,7 +45,7 @@ function pp_maps_geocode_metabox( $user ) {
 		</tr>
 		<tr>
 			<th>
-				<label for="birthday">Latitude</label>
+				<label for="geo_latitude">Latitude</label>
 			</th>
 			<td>
 				<input type="text"

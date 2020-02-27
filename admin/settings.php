@@ -106,7 +106,7 @@ add_filter( "um_predefined_fields_hook", 'pp_maps_add_field', 10 );
 
 function pp_maps_add_field( $fields ) {
 
-	$fields['pp_address'] = array(
+	$fields['ump_address'] = array(
 		'title'    => __( 'Map Address', 'pp-maps' ),
 		'label'    => __( 'Map Address', 'pp-maps' ),
 		'metakey'  => 'pp_address',
@@ -118,8 +118,6 @@ function pp_maps_add_field( $fields ) {
 		'type'     => 'text',
 		'icon'     => 'um-faicon-map-marker'
 	);
-
-	UM()->account()->add_displayed_field( 'pp_address', 'general' );
 
 	$fields['ump_longitude'] = array(
 		'title'    => __( 'Longitude', 'pp-maps' ),

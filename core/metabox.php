@@ -13,11 +13,11 @@ class PP_Maps_Metabox {
 	 ***    @Init the metaboxes
 	 */
 	function add_metabox() {
+		
 		global $current_screen;
 
 		if ( $current_screen->id == 'um_directory' ) {
 			add_action( 'add_meta_boxes', array( &$this, 'add_metabox_form' ), 1 );
-			//add_action('save_post', array(&$this, 'save_metabox_form'), 10, 2);
 		}
 
 	}
