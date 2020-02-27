@@ -1,6 +1,7 @@
 <?php
 
-class PP_Maps_API {
+class UM_Maps_API {
+
 	public $notice_message = '';
 	public $plugin_inactive = false;
 
@@ -18,12 +19,17 @@ class PP_Maps_API {
 	 ***    @Check plugin requirements
 	 */
 	function plugin_check() {
+
 		if ( ! class_exists( 'UM' ) ) {
+
 			$this->notice_message   = __( 'The <strong>Ultimate Member Maps</strong> plugin requires the Ultimate Member plugin to be activated to work properly. You can download it <a href="https://wordpress.org/plugins/ultimate-member">here</a>', 'pp-maps' );
 			$this->plugin_inactive = true;
+
 		} else if ( ! version_compare( ultimatemember_version, UM_MAPS_REQUIRES, '>=' ) ) {
+
 			$this->notice_message   = __( 'The <strong>Ultimate Member Maps</strong> plugin  requires a <a href="https://wordpress.org/plugins/ultimate-member">newer version</a> of Ultimate Member to work properly.', 'pp-maps' );
 			$this->plugin_inactive = true;
+
 		}
 	}
 
@@ -42,6 +48,7 @@ class PP_Maps_API {
 	 ***    @Init
 	 */
 	function init() {
+
 		if ( $this->plugin_inactive ) {
 			return;
 		}
@@ -59,7 +66,9 @@ class PP_Maps_API {
 		$this->metabox       = new PP_Maps_Metabox();
 		$this->geocode       = new PP_Geocode();
 		$this->roles_metabox = new PP_Maps_Role_Metabox();
+
 	}
+
 }
 
-$pp_maps = new PP_Maps_API();
+$pp_maps = new UM_Maps_API();
