@@ -6,8 +6,8 @@ jQuery(document).ready(function () {
         script.type = "text/javascript";
         script.src = "https://maps.google.com/maps/api/js?callback=initMap";
 
-        if (PP_MAPS_API.api_key != "") {
-            script.src += "&key=" + PP_MAPS_API.api_key;
+        if (UM_MAPS_API.api_key != "") {
+            script.src += "&key=" + UM_MAPS_API.api_key;
         }
 
         document.body.appendChild(script);

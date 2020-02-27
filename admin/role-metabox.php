@@ -10,7 +10,7 @@ class PP_Maps_Role_Metabox {
 
 	function role_metabox( $roles_metaboxes ) {
 		$roles_metaboxes[] = array(
-			'id'       => "um-admin-form-maps{" . PP_MAPS_PLUGIN_DIR . "}",
+			'id'       => "um-admin-form-maps{" . UM_MAPS_PLUGIN_DIR . "}",
 			'title'    => __( 'Map Options', 'pp-maps' ),
 			'callback' => array( UM()->metabox(), 'load_metabox_role' ),
 			'screen'   => 'um_role_meta',

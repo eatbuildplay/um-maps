@@ -81,11 +81,11 @@ function pp_show_map( $args ) {
 
 	echo '<div id="pp_map" style="height:' . $args['maps_height'] . 'px;width:100%;margin-bottom:25px;"></div>';
 
-	wp_enqueue_script( 'pp-maps-gmaps-init', PP_MAPS_PLUGIN_URI . 'assets/js/gmaps-init.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'pp-maps-gmaps-init', UM_MAPS_PLUGIN_URI . 'assets/js/gmaps-init.js', array( 'jquery' ), false, true );
 
 	$google_maps_js_api_key = trim( um_get_option( 'pp_maps_js_api_key' ) );
 
-	wp_localize_script( 'pp-maps-gmaps-init', "PP_MAPS_API", array(
+	wp_localize_script( 'pp-maps-gmaps-init', "UM_MAPS_API", array(
 		"api_key" => empty( $google_maps_js_api_key ) ? '' : $google_maps_js_api_key,
 	) );
 }

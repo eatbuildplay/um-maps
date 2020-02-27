@@ -43,7 +43,7 @@ class PP_Maps_Metabox {
 	 */
 	function load_metabox_form( $object, $box ) {
 		$box['id'] = str_replace( 'um-admin-form-', '', $box['id'] );
-		include_once PP_MAPS_PLUGIN_DIR . 'includes/admin/templates/directory.php';
+		include_once UM_MAPS_PLUGIN_DIR . 'includes/admin/templates/directory.php';
 		wp_nonce_field( basename( __FILE__ ), 'um_admin_metabox_maps_form_nonce' );
 	}
 
