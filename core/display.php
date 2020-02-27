@@ -31,10 +31,6 @@ function pp_show_map( $args ) {
 		}
 	}
 
-	/*
-	 * Fetch users
-	 */
-	// https://developer.wordpress.org/reference/functions/get_users/
 	$users = get_users(
 		array(
 			'fields' => array('ID')
@@ -44,24 +40,12 @@ function pp_show_map( $args ) {
 		$data['users'][] = $user->ID;
 	}
 
-	/*
-	print '<pre>';
-	var_dump( $data['users'] );
-	print '</pre>';
-	*/
-
 	$members = pp_maps_get_members(
 		$args['maps_info_width'],
 		$args['maps_avatar'],
 		$args['map_fields'],
 		$data['users']
 	);
-
-	/*
-	print '<pre>';
-	var_dump( $members );
-	print '</pre>';
-	*/
 
 	wp_enqueue_style( 'pp_maps_css' );
 
@@ -77,11 +61,21 @@ function pp_show_map( $args ) {
 		"center_lng"   => isset( $args['maps_center_long'] ) ? $args['maps_center_long'] : "",
 	) );
 
+	wp_enqueue_script(
+		'pp-maps-gmaps-init',
+		UM_MAPS_PLUGIN_URI . 'assets/js/gmaps-init.js',
+		array( 'jquery', 'pp_maps_cluster', 'pp_maps_display' ), 
+		false,
+		true
+	);
+
+
+
+	wp_enqueue_script( "pp_maps_spider" );
 	wp_enqueue_script( "pp_maps_display" );
 
 	echo '<div id="pp_map" style="height:' . $args['maps_height'] . 'px;width:100%;margin-bottom:25px;"></div>';
 
-	wp_enqueue_script( 'pp-maps-gmaps-init', UM_MAPS_PLUGIN_URI . 'assets/js/gmaps-init.js', array( 'jquery' ), false, true );
 
 	$google_maps_js_api_key = trim( um_get_option( 'pp_maps_js_api_key' ) );
 
