@@ -5,7 +5,7 @@
  * Plugin Name: Ultimate Member - Maps
  * Plugin URI: https://eatbuildplay.com/plugins/ultimate-member-maps/
  * Description: Add a filterable map to your Ultimate Members Directory
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Casey Milne, Eat/Build/Play
  * Author URI: https://eatbuildplay.com/
  */

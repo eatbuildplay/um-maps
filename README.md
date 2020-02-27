@@ -6,15 +6,15 @@ Easily add a map to your Ultimate Member directories. This plugin integrates sea
 
 ## Documentation
 
-[Ultimate Member Maps Plugin Documentation](https://www.plusplugins.com/ultimate-member-maps-documentation/).
+[Ultimate Member Maps Plugin Documentation](https://eatbuildplay.com/plugins/um-maps/).
 
 ## Bugs
 
-If you find an issue, [let us know here](https://www.plusplugins.com/support/)!
+If you find an issue, [let us know here](https://eatbuildplay.com/plugins/um-maps/support/)!
 
 ## Support
 
-Please visit the [Ultimate Member Maps Support](https://www.plusplugins.com/support/) for offering ideas, or getting support.
+Please visit the [Ultimate Member Maps Support](https://eatbuildplay.com/plugins/um-maps/support/) for offering ideas, or getting support.
 
 ##Upgrade Notice 1.0.0
 
