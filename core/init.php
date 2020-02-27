@@ -5,11 +5,13 @@ class PP_Maps_API {
 	public $plugin_inactive = false;
 
 	function __construct() {
+
 		$this->plugin_inactive = false;
 
-		add_action( 'init', array( &$this, 'plugin_check' ), 1 );
-		add_action( 'init', array( &$this, 'init' ), 1 );
+		add_action( 'plugins_loaded', array( &$this, 'plugin_check' ), -1 );
+		add_action( 'init', array( &$this, 'init' ), -1 );
 		add_action( 'admin_notices', array( $this, 'add_notice' ), 20 );
+
 	}
 
 	/***

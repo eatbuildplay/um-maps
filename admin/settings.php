@@ -52,12 +52,10 @@ add_filter(
 
 function pp_maps_default_tab_setting_tab_content( $section ) {
 
-	if ( strstr( $section, 'pp-maps-license-key' ) ) {
-		$settings_section = pp_maps_settings_get_geocoding_html();
-		$section          = $section . $settings_section;
-	}
-
+	$settings_section = pp_maps_settings_get_geocoding_html();
+	$section          = $section . $settings_section;
 	return $section;
+
 }
 
 function pp_maps_settings_get_geocoding_html() {
@@ -108,16 +106,20 @@ add_filter( "um_predefined_fields_hook", 'pp_maps_add_field', 10 );
 
 function pp_maps_add_field( $fields ) {
 
-	$fields['ump_address'] = array(
+	$fields['pp_address'] = array(
 		'title'    => __( 'Map Address', 'pp-maps' ),
 		'label'    => __( 'Map Address', 'pp-maps' ),
 		'metakey'  => 'pp_address',
 		'required' => 0,
 		'public'   => 1,
 		'editable' => 1,
+		'allowclear'    => 0,
+		'default'			=> 0,
 		'type'     => 'text',
 		'icon'     => 'um-faicon-map-marker'
 	);
+
+	UM()->account()->add_displayed_field( 'pp_address', 'general' );
 
 	$fields['ump_longitude'] = array(
 		'title'    => __( 'Longitude', 'pp-maps' ),
@@ -142,4 +144,5 @@ function pp_maps_add_field( $fields ) {
 	);
 
 	return $fields;
+
 }
