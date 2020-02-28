@@ -5,8 +5,6 @@ var map,
 
 function initMap() {
 
-  console.log('initMap called')
-
   bounds = new google.maps.LatLngBounds();
 
   PP_MAPS.members.forEach(function (member) {
@@ -52,12 +50,6 @@ function initMap() {
     });
   }
 
-  oms = new OverlappingMarkerSpiderfier( map, {
-    markersWontMove: true,
-    markersWontHide: true,
-    basicFormatEvents: true
-  });
-
 }
 
 function setMarker(member) {
@@ -80,3 +72,5 @@ function setMarker(member) {
   markers.push(marker);
 
 }
+
+initMap()

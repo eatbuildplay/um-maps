@@ -18,6 +18,8 @@ function pp_place_map( $args ) {
 
 function pp_show_map( $args ) {
 
+	$google_maps_js_api_key = trim( um_get_option( 'pp_maps_js_api_key' ) );
+
 	if ( $args['maps'] != 1 ) {
 		return;
 	}
@@ -61,25 +63,23 @@ function pp_show_map( $args ) {
 		"center_lng"   => isset( $args['maps_center_long'] ) ? $args['maps_center_long'] : "",
 	) );
 
+
+
 	wp_enqueue_script(
-		'pp-maps-gmaps-init',
-		UM_MAPS_PLUGIN_URI . 'assets/js/gmaps-init.js',
-		array( 'jquery', 'pp_maps_cluster', 'pp_maps_display' ), 
+		'pp-maps-gmaps',
+		'https://maps.google.com/maps/api/js?key=' . $google_maps_js_api_key,
+		array(),
 		false,
 		true
 	);
 
-
-
-	wp_enqueue_script( "pp_maps_spider" );
+	wp_enqueue_script( "pp_maps_cluster" );
 	wp_enqueue_script( "pp_maps_display" );
 
 	echo '<div id="pp_map" style="height:' . $args['maps_height'] . 'px;width:100%;margin-bottom:25px;"></div>';
 
 
-	$google_maps_js_api_key = trim( um_get_option( 'pp_maps_js_api_key' ) );
-
-	wp_localize_script( 'pp-maps-gmaps-init', "UM_MAPS_API", array(
+	wp_localize_script( 'pp-maps', "UM_MAPS_API", array(
 		"api_key" => empty( $google_maps_js_api_key ) ? '' : $google_maps_js_api_key,
 	) );
 }
