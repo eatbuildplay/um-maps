@@ -13,14 +13,6 @@ class UM_Maps_API {
 		add_action( 'init', array( &$this, 'init' ), -1 );
 		add_action( 'admin_notices', array( $this, 'add_notice' ), 20 );
 
-		add_action( 'um_maps_geocoding', array($this, 'cronRunGeocoding'));
-
-	}
-
-	public function cronRunGeocoding() {
-
-		
-
 	}
 
 	/***

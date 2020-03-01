@@ -19,18 +19,3 @@ define( 'UM_MAPS_VERSION', '1.0.0' );
 define( 'UM_MAPS_LICENSE_STATUS', 'pp-maps-license-status' );
 
 require_once UM_MAPS_PLUGIN_DIR . 'core/init.php';
-
-/*
- * Cron scheduling
- */
-register_activation_hook( UM_MAPS_PLUGIN_DIR . '/um-maps.php', 'registerActivationHook');
-register_deactivation_hook( UM_MAPS_PLUGIN_DIR . '/um-maps.php', 'registerDeactivationHook');
-
-registerActivationHook() {
-  wp_schedule_event( time(), 'daily', 'um_maps_geocoding' );
-}
-
-registerDeactivationHook() {
-  $timestamp = wp_next_scheduled( 'um_maps_geocoding' );
-  wp_unschedule_event( $timestamp, 'um_maps_geocoding' );
-}
