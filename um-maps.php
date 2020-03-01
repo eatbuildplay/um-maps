@@ -15,7 +15,6 @@ define( 'UM_MAPS_PLUGIN_URI', plugin_dir_url( __FILE__ ) );
 define( 'UM_MAPS_REQUIRES', '2.0.0' );
 define( 'UM_MAPS_STORE_URL', 'https://plusplugins.com' );
 define( 'UM_MAPS_ITEM_NAME', 'Ultimate Member Maps' );
-define( 'UM_MAPS_VERSION', '1.0.0' );
-define( 'UM_MAPS_LICENSE_STATUS', 'pp-maps-license-status' );
+define( 'UM_MAPS_VERSION', '1.1.0' );
 
 require_once UM_MAPS_PLUGIN_DIR . 'core/init.php';
