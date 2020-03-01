@@ -32,10 +32,11 @@ class PP_Geocode {
 
 	function get_metas() {
 
-		$metas = array( "pp_address" );
+		// default user profile address
+		$metas = array( "pp_address", "geo_map_address" );
 
+		// override via setting custom field in UM settings
 		$custom_meta = trim( um_get_option( 'pp_maps_geocode_meta' ) );
-
 		if ( $custom_meta != "" ) {
 			$metas = array_map( "trim", explode( ",", $custom_meta ) );
 		}
