@@ -7,9 +7,8 @@ function pp_maps_get_members( $width = 300, $show_avatar = 1, $fields, $ids ) {
 		um_fetch_user( $user_id );
 		$name = um_user( 'display_name' );
 
-		$aka = um_user( 'um_aka' );
-		$lat  = floatval( um_user( 'geo_latitude' ) );
-		$lng  = floatval( um_user( 'geo_longitude' ) );
+		$lat  = get_user_meta($user_id, 'geo_latitude');
+		$lng  = get_user_meta($user_id, 'geo_longitude');
 
 		$role = um_user( 'role' );
 		$desc1 = um_user( 'memb__PrimaryELCStatus' );

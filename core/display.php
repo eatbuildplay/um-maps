@@ -35,9 +35,11 @@ function pp_show_map( $args ) {
 
 	$users = get_users(
 		array(
-			'fields' => array('ID')
+			'fields' => array('ID'),
+			'role__not_in' => array('Administrator')
 		)
 	);
+
 	foreach( $users as $user ) {
 		$data['users'][] = $user->ID;
 	}
