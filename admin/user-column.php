@@ -33,14 +33,14 @@ function pp_maps_geocode_metabox( $user ) {
 	<table class="form-table">
 		<tr>
 			<th>
-				<label for="geo_map_address">Map Address</label>
+				<label for="pp_address">Map Address</label>
 			</th>
 			<td>
 				<input type="text"
 					class="regular-text ltr"
-					id="geo_map_address"
-					name="geo_map_address"
-					value="<?= esc_attr( get_user_meta( $user->ID, 'geo_map_address', true ) ); ?>">
+					id="pp_address"
+					name="pp_address"
+					value="<?= esc_attr( get_user_meta( $user->ID, 'pp_address', true ) ); ?>">
 			</td>
 		</tr>
 		<tr>
@@ -95,8 +95,8 @@ function pp_maps_geocode_metabox_save( $user_id ) {
 	// create/update user meta for the $user_id
 	update_user_meta(
 		$user_id,
-		'geo_map_address',
-		$_POST['geo_map_address']
+		'pp_address',
+		$_POST['pp_address']
 	);
 
 	update_user_meta(
