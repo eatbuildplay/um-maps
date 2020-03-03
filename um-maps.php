@@ -18,3 +18,8 @@ define( 'UM_MAPS_ITEM_NAME', 'Ultimate Member Maps' );
 define( 'UM_MAPS_VERSION', '1.1.0' );
 
 require_once UM_MAPS_PLUGIN_DIR . 'core/init.php';
+
+/* Activation Hook */
+require_once UM_MAPS_PLUGIN_DIR . 'src/Cron.php';
+register_activation_hook( __FILE__, array( '\\UM_MAPS\CronGeocode', 'onActivation'));
+register_deactivation_hook( __FILE__, array( '\\UM_MAPS\CronGeocode', 'onDeactivation'));

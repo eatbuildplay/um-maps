@@ -53,6 +53,8 @@ class UM_Maps_API {
 			return;
 		}
 
+		require_once UM_MAPS_PLUGIN_DIR . 'src/Cron.php';
+
 		require_once UM_MAPS_PLUGIN_DIR . 'core/register-scripts.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'core/utils.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'core/metabox.php';
@@ -66,6 +68,8 @@ class UM_Maps_API {
 		$this->metabox       = new PP_Maps_Metabox();
 		$this->geocode       = new PP_Geocode();
 		$this->roles_metabox = new PP_Maps_Role_Metabox();
+
+		new \UM_MAPS\CronGeocode();
 
 	}
 
