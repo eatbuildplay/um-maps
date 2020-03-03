@@ -4,7 +4,7 @@ var map,
     infowindow,
     bounds;
 
-function initMap() {
+function initMap( members ) {
 
   // spiderfier
   (function(){var m,t,w,y,u,z={}.hasOwnProperty,A=[].slice;this.OverlappingMarkerSpiderfier=function(){function r(a,d){var b,f,e;this.map=a;null==d&&(d={});null==this.constructor.N&&(this.constructor.N=!0,h=google.maps,l=h.event,p=h.MapTypeId,c.keepSpiderfied=!1,c.ignoreMapClick=!1,c.markersWontHide=!1,c.markersWontMove=!1,c.basicFormatEvents=!1,c.nearbyDistance=20,c.circleSpiralSwitchover=9,c.circleFootSeparation=23,c.circleStartAngle=x/12,c.spiralFootSeparation=26,c.spiralLengthStart=11,c.spiralLengthFactor=
@@ -30,12 +30,14 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
 
   bounds = new google.maps.LatLngBounds();
 
-  map = new google.maps.Map(document.getElementById('pp_map'), {
-    mapTypeId: google.maps.MapTypeId[PP_MAPS.type.toUpperCase()],
-    maxZoom: PP_MAPS.max_zoom,
-    scrollwheel: (PP_MAPS.scrollwheel == 1),
-    streetViewControl:false
-  });
+  map = new google.maps.Map(
+    document.getElementById('pp_map'), {
+      mapTypeId: google.maps.MapTypeId[PP_MAPS.type.toUpperCase()],
+      maxZoom: PP_MAPS.max_zoom,
+      scrollwheel: (PP_MAPS.scrollwheel == 1),
+      streetViewControl:false
+    }
+  );
 
   oms = new OverlappingMarkerSpiderfier(map, {
     markersWontMove: true,
@@ -43,7 +45,11 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
     basicFormatEvents: true
   });
 
-  PP_MAPS.members.forEach(function (member) {
+  members.forEach(function (member) {
+
+    member.lat = 14;
+    member.lng = -47;
+
     setMarker(member);
     bounds.extend(new google.maps.LatLng(member.lat, member.lng));
   });
@@ -85,7 +91,7 @@ function setMarker(member) {
 
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(member.lat, member.lng),
-    title: member.name,
+    title: member.display_name,
     icon: PP_MAPS.icon
   });
 
@@ -94,6 +100,7 @@ function setMarker(member) {
   }
 
   google.maps.event.addListener(marker, 'spider_click', function () {
+    member.content = member.display_name
     infowindow.setContent(member.content);
     infowindow.open(map, marker);
   });
@@ -103,4 +110,13 @@ function setMarker(member) {
 
 }
 
-initMap()
+
+
+
+/*
+ * React to map search and filtering
+ */
+wp.hooks.addAction( 'um_member_directory_loaded', 'um-maps', function( directory, answer ) {
+  console.log(answer.users)
+  initMap( answer.users )
+});
