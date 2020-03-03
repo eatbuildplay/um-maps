@@ -74,6 +74,12 @@ function pp_maps_geocode_metabox( $user ) {
 	<?php
 }
 
+// add the field to user add screen
+add_action(
+	'user_new_form',
+	'pp_maps_geocode_metabox'
+);
+
 // add the field to user's own profile editing screen
 add_action(
 	'edit_user_profile',
@@ -111,6 +117,12 @@ function pp_maps_geocode_metabox_save( $user_id ) {
 		$_POST['geo_longitude']
 	);
 }
+
+// add the save action to add user form
+add_action(
+	'user_register',
+	'pp_maps_geocode_metabox_save'
+);
 
 // add the save action to user's own profile editing screen update
 add_action(
