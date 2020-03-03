@@ -45,13 +45,20 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
     basicFormatEvents: true
   });
 
+  // clear markers before refreshing
+  markers.forEach( function( marker ) {
+    marker.setMap(null);
+    oms.removeMarker( marker )
+  })
+  markers = []
+
   members.forEach(function (member) {
     setMarker(member);
     bounds.extend(new google.maps.LatLng(member.um_maps.lat, member.um_maps.lng));
   });
 
   if (markers.length === 0) {
-    document.getElementById('pp_map').remove();
+    // document.getElementById('pp_map').remove();
     return false;
   }
 
@@ -106,13 +113,9 @@ function setMarker(member) {
 
 }
 
-
-
-
 /*
  * React to map search and filtering
  */
 wp.hooks.addAction( 'um_member_directory_loaded', 'um-maps', function( directory, answer ) {
-  console.log(answer.users)
   initMap( answer.users )
 });

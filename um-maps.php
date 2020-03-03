@@ -24,7 +24,9 @@ require_once UM_MAPS_PLUGIN_DIR . 'src/Cron.php';
 register_activation_hook( __FILE__, array( '\\UM_MAPS\CronGeocode', 'onActivation'));
 register_deactivation_hook( __FILE__, array( '\\UM_MAPS\CronGeocode', 'onDeactivation'));
 
-
+/*
+ * Filter the response after search/filter
+ */
 add_filter('um_ajax_get_members_response', 'filterMembersResponse', 10 );
 function filterMembersResponse( $response ) {
 
