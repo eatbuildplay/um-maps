@@ -46,12 +46,8 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
   });
 
   members.forEach(function (member) {
-
-    member.lat = 14;
-    member.lng = -47;
-
     setMarker(member);
-    bounds.extend(new google.maps.LatLng(member.lat, member.lng));
+    bounds.extend(new google.maps.LatLng(member.um_maps.lat, member.um_maps.lng));
   });
 
   if (markers.length === 0) {
@@ -90,7 +86,7 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
 function setMarker(member) {
 
   var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(member.lat, member.lng),
+    position: new google.maps.LatLng(member.um_maps.lat, member.um_maps.lng),
     title: member.display_name,
     icon: PP_MAPS.icon
   });
