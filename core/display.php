@@ -80,8 +80,5 @@ function pp_show_map( $args ) {
 
 	echo '<div id="pp_map" style="height:' . $args['maps_height'] . 'px;width:100%;margin-bottom:25px;"></div>';
 
-
-	wp_localize_script( 'pp-maps', "UM_MAPS_API", array(
-		"api_key" => empty( $google_maps_js_api_key ) ? '' : $google_maps_js_api_key,
-	) );
+	wp_localize_script( 'pp_maps_display', "umMapsBaseUrl", UM_MAPS_PLUGIN_URI );
 }

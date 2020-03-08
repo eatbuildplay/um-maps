@@ -72,7 +72,8 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
   });
 
   var markerCluster = new MarkerClusterer(map, [], {
-    maxZoom: 12
+    maxZoom: 12,
+    imagePath: umMapsBaseUrl + 'assets/images/m'
   });
 
   markerCluster.addMarkers(markers);
