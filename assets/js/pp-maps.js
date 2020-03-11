@@ -4,7 +4,30 @@ var map,
     infowindow,
     bounds;
 
-function initMap( members ) {
+function initMap( data ) {
+
+  var members = data.users;
+  var isSearch = data.is_search;
+
+  if( !isSearch ) {
+
+    var request = {
+  		directory_id:   jQuery('.um-directory').data('hash'),
+  		nonce:          um_scripts.nonce,
+      page: -1
+  	};
+
+    wp.ajax.send( 'um_get_members', {
+  		data: request,
+  		success: function( answer ) {
+  			console.log( answer )
+      },
+  		error: function( data ) {
+  			console.log( data );
+  		}
+    })
+
+  }
 
   // spiderfier
   (function(){var m,t,w,y,u,z={}.hasOwnProperty,A=[].slice;this.OverlappingMarkerSpiderfier=function(){function r(a,d){var b,f,e;this.map=a;null==d&&(d={});null==this.constructor.N&&(this.constructor.N=!0,h=google.maps,l=h.event,p=h.MapTypeId,c.keepSpiderfied=!1,c.ignoreMapClick=!1,c.markersWontHide=!1,c.markersWontMove=!1,c.basicFormatEvents=!1,c.nearbyDistance=20,c.circleSpiralSwitchover=9,c.circleFootSeparation=23,c.circleStartAngle=x/12,c.spiralFootSeparation=26,c.spiralLengthStart=11,c.spiralLengthFactor=
@@ -126,10 +149,17 @@ function setMarker(member) {
 /*
  * React to map search and filtering
  */
-wp.hooks.addAction( 'um_member_directory_loaded', 'um-maps', function( directory, answer ) {
-  initMap( answer.users )
+wp.hooks.addAction( 'um_member_directory_loaded', 'um-maps.action_directory_loaded', function( directory, answer ) {
+  initMap( answer )
 });
 
+/*
+wp.hooks.addFilter( 'um_member_directory_filter_request', 'um-maps.filter_directory_request', function( request ) {
+  console.log( request )
+  request.page = false
+  return request
+})
+*/
 
 var mapStyle = [
   {
