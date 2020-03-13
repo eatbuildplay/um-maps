@@ -24,38 +24,9 @@ function pp_show_map( $args ) {
 		return;
 	}
 
-	$role_icons = array();
-	foreach ( UM()->roles()->get_roles() as $slug => $title ) {
-		$role_data = UM()->roles()->role_data( $slug );
-
-		if ( isset( $role_data['maps_pin'] ) && $role_data['maps_pin'] != "" ) {
-			$role_icons[ $slug ] = $role_data['maps_pin'];
-		}
-	}
-
-	$users = get_users(
-		array(
-			'fields' => array('ID'),
-			'role__not_in' => array('Administrator')
-		)
-	);
-
-	foreach( $users as $user ) {
-		$data['users'][] = $user->ID;
-	}
-
-	$members = pp_maps_get_members(
-		$args['maps_info_width'],
-		$args['maps_avatar'],
-		$args['map_fields'],
-		$data['users']
-	);
-
 	wp_enqueue_style( 'pp_maps_css' );
 
 	wp_localize_script( 'pp_maps_display', "PP_MAPS", array(
-		"members"      => $members,
-		"role_icons"   => $role_icons,
 		"type"         => $args['maps_type'],
 		"max_zoom"     => $args['maps_max_zoom'],
 		"icon"       	 => $args['maps_icon'],
@@ -64,8 +35,6 @@ function pp_show_map( $args ) {
 		"center_lat"   => isset( $args['maps_center_lat'] ) ? $args['maps_center_lat'] : "",
 		"center_lng"   => isset( $args['maps_center_long'] ) ? $args['maps_center_long'] : "",
 	) );
-
-
 
 	wp_enqueue_script(
 		'pp-maps-gmaps',
@@ -81,4 +50,5 @@ function pp_show_map( $args ) {
 	echo '<div id="pp_map" style="height:' . $args['maps_height'] . 'px;width:100%;margin-bottom:25px;"></div>';
 
 	wp_localize_script( 'pp_maps_display', "umMapsBaseUrl", UM_MAPS_PLUGIN_URI );
+
 }

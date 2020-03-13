@@ -123,11 +123,9 @@ function setMarker(member) {
     icon: PP_MAPS.icon
   });
 
-  if (typeof PP_MAPS.role_icons[member.role] !== 'undefined') {
-    marker.setIcon(PP_MAPS.role_icons[member.role]);
-  }
-
   google.maps.event.addListener(marker, 'spider_click', function () {
+
+    console.log( member )
 
     /* we need to create the info content in PHP
       first and pass it as a single var so that
