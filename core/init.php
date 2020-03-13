@@ -56,11 +56,9 @@ class UM_Maps_API {
 		require_once UM_MAPS_PLUGIN_DIR . 'src/Cron.php';
 
 		require_once UM_MAPS_PLUGIN_DIR . 'core/register-scripts.php';
-		require_once UM_MAPS_PLUGIN_DIR . 'core/utils.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'core/metabox.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'core/display.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'core/geocode.php';
-		require_once UM_MAPS_PLUGIN_DIR . 'core/shortcode.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'admin/settings.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'admin/user-column.php';
 		require_once UM_MAPS_PLUGIN_DIR . 'admin/role-metabox.php';
