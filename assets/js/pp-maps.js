@@ -153,14 +153,6 @@ wp.hooks.addAction( 'um_member_directory_loaded', 'um-maps.action_directory_load
   initMap( answer )
 });
 
-/*
-wp.hooks.addFilter( 'um_member_directory_filter_request', 'um-maps.filter_directory_request', function( request ) {
-  console.log( request )
-  request.page = false
-  return request
-})
-*/
-
 var mapStyle = [
   {
     "elementType": "geometry",
