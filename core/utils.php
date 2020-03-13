@@ -31,10 +31,6 @@ function pp_maps_get_members( $width = 300, $show_avatar = 1, $fields, $ids ) {
 
 		$content .= '<br /><a style="margin-top;5px;" href="' . $url . '"><strong>' . $name . '</strong></a>';
 
-		$content .= '<br />';
-
-		$content .= '<strong>' . $aka . '</strong></a>';
-
 		foreach ( $fields as $map_field ) {
 			$content .= "<br />";
 			$raw = um_user( $map_field );
