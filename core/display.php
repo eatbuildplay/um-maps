@@ -52,3 +52,31 @@ function pp_show_map( $args ) {
 	wp_localize_script( 'pp_maps_display', "umMapsBaseUrl", UM_MAPS_PLUGIN_URI );
 
 }
+
+/*
+ * Filter the response to create additional UM settings
+ * Runs after search/filter
+ */
+add_filter('um_ajax_get_members_response', 'filterMembersResponse', 10 );
+function filterMembersResponse( $response ) {
+
+  if( !empty( $response['users'] )) {
+    foreach( $response['users'] as $index => $userCard ) {
+
+      $userId = $userCard['id'];
+      $userMeta = get_user_meta( $userId );
+      $userCard['um_maps'] = array(
+        'address'    => $userMeta['pp_address'][0],
+        'lat'  => $userMeta['geo_latitude'][0],
+        'lng' => $userMeta['geo_longitude'][0],
+				// 'meta' => $userMeta
+      );
+
+      $response['users'][$index] = $userCard;
+
+    }
+  }
+
+  return $response;
+
+}
