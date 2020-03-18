@@ -34,7 +34,8 @@ function pp_show_map( $args ) {
 		"initial_zoom" => $args['maps_initial_zoom'],
 		"center_lat"   => isset( $args['maps_center_lat'] ) ? $args['maps_center_lat'] : "",
 		"center_lng"   => isset( $args['maps_center_long'] ) ? $args['maps_center_long'] : "",
-	) );
+		"info_fields"  => $args['map_fields']
+	));
 
 	wp_enqueue_script(
 		'pp-maps-gmaps',
