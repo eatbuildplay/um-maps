@@ -78,7 +78,7 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
 
   members.forEach(function (member) {
     setMarker(member);
-    bounds.extend(new google.maps.LatLng(member.um_maps.lat, member.um_maps.lng));
+    bounds.extend(new google.maps.LatLng(member.geo_latitude, member.geo_longitude));
   });
 
   if (markers.length === 0) {
@@ -118,7 +118,7 @@ this.trigger("unspiderfy",h,g);return this};c.i=function(a,d){var b,c;b=a.x-d.x;
 function setMarker(member) {
 
   var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(member.um_maps.lat, member.um_maps.lng),
+    position: new google.maps.LatLng(member.geo_latitude, member.geo_longitude),
     title: member.display_name,
     icon: PP_MAPS.icon
   });
@@ -131,9 +131,14 @@ function setMarker(member) {
       first and pass it as a single var so that
       we can respect the settings for what fields to show
       */
+
+    //content += '<h2>' + member.clinic_name + '</h2>'
+    //content += '<a href="' + member.profile_url + '"><button>View Profile</button></a>'
+
     var content = '';
-    content += '<h2>' + member.clinic_name + '</h2>'
-    content += '<a href="' + member.profile_url + '"><button>View Profile</button></a>'
+    PP_MAPS.info_fields.forEach( function( fieldKey, index ) {
+      content += '<div>' + member[fieldKey] + '</div>'
+    })
 
     infowindow.setContent( content );
     infowindow.open(map, marker);

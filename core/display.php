@@ -66,12 +66,10 @@ function filterMembersResponse( $response ) {
 
       $userId = $userCard['id'];
       $userMeta = get_user_meta( $userId );
-      $userCard['um_maps'] = array(
-        'address'    => $userMeta['pp_address'][0],
-        'lat'  => $userMeta['geo_latitude'][0],
-        'lng' => $userMeta['geo_longitude'][0],
-				// 'meta' => $userMeta
-      );
+			
+			$userCard['pp_address'] 		= $userMeta['pp_address'][0];
+			$userCard['geo_latitude'] 	= $userMeta['geo_latitude'][0];
+			$userCard['geo_longitude'] 	= $userMeta['geo_longitude'][0];
 
       $response['users'][$index] = $userCard;
 
