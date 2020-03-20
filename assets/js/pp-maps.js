@@ -125,20 +125,16 @@ function setMarker(member) {
 
   google.maps.event.addListener(marker, 'spider_click', function () {
 
+    /*
+     * Add content to map infobox
+     */
     console.log( member )
-
-    /* we need to create the info content in PHP
-      first and pass it as a single var so that
-      we can respect the settings for what fields to show
-      */
-
-    //content += '<h2>' + member.clinic_name + '</h2>'
-    //content += '<a href="' + member.profile_url + '"><button>View Profile</button></a>'
-
-    var content = '';
+    var content = '<div class="um-map-infobox">';
     PP_MAPS.info_fields.forEach( function( fieldKey, index ) {
-      content += '<div>' + member[fieldKey] + '</div>'
+      content += '<div class="um-map-infobox-field um-map-info-box-field-' + fieldKey + '">' + member[fieldKey] + '</div>';
     })
+    content += '<a class="um-map-infobox-profile-link" href="' + member.profile_url + '">View Profile</a>';
+    content += '</div>';
 
     infowindow.setContent( content );
     infowindow.open(map, marker);
