@@ -128,7 +128,9 @@ function setMarker(member) {
     /*
      * Add content to map infobox
      */
-    console.log( member )
+    console.log(member)
+    console.log( PP_MAPS.info_fields )
+
     var content = '<div class="um-map-infobox">';
     PP_MAPS.info_fields.forEach( function( fieldKey, index ) {
       content += '<div class="um-map-infobox-field um-map-info-box-field-' + fieldKey + '">' + member[fieldKey] + '</div>';
